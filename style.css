@@ -1,0 +1,173 @@
+body { font-family: 'Arial', sans-serif; background: #f4f4f4; padding: 20px; }
+
+.invoice-box {
+    background: white;
+    width: 210mm; /* A4 Width */
+    min-height: 297mm;
+    margin: auto;
+    padding: 20mm;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#input-terms {
+    width: 100%;
+    max-width: 600px;
+    min-height: 120px;
+    padding: 10px;
+    resize: vertical;
+}
+
+header h1 { margin: 0; font-size: 24px; color: #000; }
+.tagline { font-weight: bold; margin: 5px 0; }
+hr { border: 0; border-top: 1px solid #000; margin: 15px 0; }
+
+.meta-info { display: flex; justify-content: space-between; margin-top: 30px; }
+.subject { margin: 30px 0; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+table th { background: #0070c0; color: white; border: 1px solid #ccc; padding: 8px; }
+table td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+
+.totals { text-align: right; margin-top: 20px; line-height: 1.6; }
+.terms {
+    margin-top: 50px;
+    font-size: 14px;
+    width: 100%;
+    display: block;
+}
+.signature { margin-top: 80px; }
+
+/* Hide controls during PDF generation */
+.no-print { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; text-align: center; }
+.controls input { padding: 8px; margin: 5px; }
+
+/* Force a strict A4 width to prevent horizontal cutting */
+#quotation-template {
+    width: 794px; 
+    margin: 0 auto;
+    padding: 40px; /* Reduced padding to give more room for text */
+    background: white;
+    box-sizing: border-box; /* Crucial: includes padding in the width */
+    overflow: hidden; /* Prevents stray elements from widening the container */
+}
+
+/* Ensure the table doesn't stretch beyond the container */
+table {
+    width: 100%;
+    table-layout: fixed; /* Keeps columns contained */
+    word-wrap: break-word;
+}
+
+/* ===== Column Width Control ===== */
+
+#items-table th,
+#items-table td {
+    box-sizing: border-box;
+}
+
+/* Sr No */
+#items-table th:nth-child(1),
+#items-table td:nth-child(1) {
+    width: 6%;
+}
+
+/* Description */
+#items-table th:nth-child(2),
+#items-table td:nth-child(2) {
+    width: 38%;
+    text-align: left;
+}
+
+/* Qty */
+#items-table th:nth-child(3),
+#items-table td:nth-child(3) {
+    width: 8%;
+}
+
+/* Unit */
+#items-table th:nth-child(4),
+#items-table td:nth-child(4) {
+    width: 10%;
+}
+
+/* Rate */
+#items-table th:nth-child(5),
+#items-table td:nth-child(5) {
+    width: 19%;
+}
+
+/* Amount */
+#items-table th:nth-child(6),
+#items-table td:nth-child(6) {
+    width: 19%;
+}
+
+/* ===== FIX TABLE CUTTING IN PDF ===== */
+
+/* Prevent rows from breaking between pages */
+tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+}
+
+/* Allow table to break properly */
+table {
+    page-break-inside: auto;
+}
+
+/* Repeat table header on every page */
+thead {
+    display: table-header-group;
+}
+
+/* Prevent cell text overflow */
+td {
+    word-break: break-word;
+    white-space: normal;
+}
+
+.signature {
+    margin-top: 80px;
+    text-align: left;   /* left aligned like professional quotation */
+}
+
+.signature-img {
+    width: 150px;   /* Adjust size */
+    height: auto;
+    margin: 10px 0;
+}
+
+/* Only apply when screen is mobile size */
+@media screen and (max-width: 100px){
+
+    .controls input {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    /* Make description full width */
+    #desc {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    /* Put qty, unit, rate in one row */
+    #qty,
+    #unit,
+    #rate {
+        width: 32%;
+        display: inline-block;
+        margin-right: 1%;
+    }
+
+    /* Remove extra space from last box */
+    #rate {
+        margin-right: 0;
+    }
+}
