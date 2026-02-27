@@ -21,6 +21,28 @@ header h1 { margin: 0; font-size: 24px; color: #000; }
 .tagline { font-weight: bold; margin: 5px 0; }
 hr { border: 0; border-top: 1px solid #000; margin: 15px 0; }
 
+/* ===== HEADER WITH LOGO ===== */
+
+.quotation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.header-left {
+    width: 75%;
+}
+
+.header-right {
+    width: 25%;
+    text-align: right;
+}
+
+.header-right img {
+    max-width: 140px;
+    height: auto;
+}
+
 .meta-info { display: flex; justify-content: space-between; margin-top: 30px; }
 .subject { margin: 30px 0; }
 
@@ -28,14 +50,57 @@ table { width: 100%; border-collapse: collapse; margin-top: 10px; }
 table th { background: #0070c0; color: white; border: 1px solid #ccc; padding: 8px; }
 table td { border: 1px solid #ccc; padding: 8px; text-align: center; }
 
-.totals { text-align: right; margin-top: 20px; line-height: 1.6; }
+/* ===== RIGHT SIDE PROFESSIONAL TOTALS ===== */
+
+.totals-container {
+    width: 38%;
+    margin-left: auto;     /* Push to right side */
+    margin-top: 25px;
+}
+
+.totals-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.totals-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ccc;
+}
+
+.totals-table td:first-child {
+    text-align: left;
+}
+
+.totals-table td:last-child {
+    text-align: right;
+}
+
+.grand-total-row {
+    background-color: #0070c0;
+    color: white;
+    font-size: 15px;
+}
 .terms {
     margin-top: 50px;
     font-size: 14px;
     width: 100%;
     display: block;
 }
-.signature { margin-top: 80px; }
+
+/* signature */
+.signature {
+    margin-top: 80px;
+    text-align: left;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.signature img {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
 
 /* Hide controls during PDF generation */
 .no-print { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; text-align: center; }
@@ -124,6 +189,44 @@ thead {
 td {
     word-break: break-word;
     white-space: normal;
+}
+
+
+/* Prevent totals from breaking across pages */
+.totals-container {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.totals-table {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.grand-total-row {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+.totals-wrapper {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+/* Prevent Terms from breaking across pages */
+.terms {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+/* Prevent list from splitting */
+.terms ul {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.terms li {
+    page-break-inside: avoid;
+    break-inside: avoid;
 }
 
 .signature {
